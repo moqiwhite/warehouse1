@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.exampdr.dao.ExamDao">
+
+    <select id="getAll" resultType="model.Detail">
+      select * from blog_detail order by createDate desc
+    </select>
+
+
+    <select id="getUser" resultType="model.User">
+        select * from user where userName=#{userName} and password=#{password}
+    </select>
+
+    <insert id="addComment" parameterType="model.Comment">
+        insert into blog_comment(content,blogId,createUser,createDate) values (#{content},#{blogId},#{createUser},SYSDATE())
+    </insert>
+
+
+</mapper>
